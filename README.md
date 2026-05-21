@@ -3,6 +3,8 @@ Repository to store code for Software Engineering Fundamentals (Assignment 4). G
 
 # Setup Notes
 - This project has been made with Maven as the build tool. Junit5 is used to run tests
+- For action workflows, download the Github Actions extension
+- Using Java version 21
 
 # Directory
 - pom.xml: maven configuration (organises dependencies, plugins, java ver)
