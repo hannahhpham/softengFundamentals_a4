@@ -8,6 +8,6 @@ public class Driver {
     private String address; 
     private String birthdate; 
 
-    //drivers need add, retrieve, update, count operations
+    //drivers need to follow the driver conditions. FIND THESE IN THE SPEC
 
 } 
