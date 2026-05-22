@@ -1,5 +1,13 @@
 package com.busdriver;
 
-public class Driver {
-    
-}
+public class Driver { 
+    private String driverID; 
+    private String name; 
+    private int experienceYears; 
+    private String licenseType; // Light, Medium, Heavy, PublicTransport 
+    private String address; 
+    private String birthdate; 
+
+    //drivers need add, retrieve, update, count operations
+
+} 
