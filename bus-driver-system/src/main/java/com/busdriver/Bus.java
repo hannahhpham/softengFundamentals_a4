@@ -21,7 +21,7 @@ public class Bus {
             throw new IllegalArgumentException("BusID must be 8 digits and contain only numbers.");
         }
 
-        if (capacity > 0 && capacity <= this.capacity) {
+        if (capacity > 0) {
             this.capacity = capacity;
         }
         else {
@@ -35,7 +35,7 @@ public class Bus {
             throw new IllegalArgumentException("Fuel must be empty or positive.");
         }
 
-        if (fuelType == "Diesel" || fuelType == "Hybrid" || fuelType == "Electricity") {
+        if (fuelType.equals("Diesel") || fuelType.equals("Hybrid")  || fuelType.equals("Electricity") ) {
             this.fuelType = fuelType;
         }
         else {
@@ -77,7 +77,7 @@ public class Bus {
     }
 
     public void setCapacity(int capacity) {
-        if (capacity > 0) {
+        if (capacity > 0 && capacity <= this.capacity) {
             this.capacity = capacity;
         }
         else {
@@ -95,7 +95,7 @@ public class Bus {
     }
 
     public void setFuelType(String fuelType) {
-        if (fuelType == "Diesel" || fuelType == "Hybrid"  || fuelType == "Electricity" ) {
+        if (fuelType.equals("Diesel") || fuelType.equals("Hybrid")  || fuelType.equals("Electricity") ) {
             this.fuelType = fuelType;
         }
         else {
@@ -103,9 +103,36 @@ public class Bus {
         }
     }
 
-
+    //special methods as outlines in restrictions
     //TODO: check if driver can drive this bus - here or in bus repo?
     //      ALSO check driver age, if >5 experience, if correct license
+
+    public boolean checkDriverAge(Driver driver) {
+        if (driver.getAge() > 50 && this.capacity >= 50) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    public boolean checkExperience(Driver driver) {
+        if (driver.getExperienceYears() < 5 && this.fuelType.equals("Electricity")) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    public boolean checkLicense(Driver driver) {
+        if (driver.getLicenseType().equals("Heavy") || driver.getLicenseType().equals("PublicTransport")) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
 
 }
