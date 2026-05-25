@@ -21,11 +21,11 @@ public class Bus {
             throw new IllegalArgumentException("BusID must be 8 digits and contain only numbers.");
         }
 
-        if (capacity > 0) {
+        if (capacity > 0 && capacity <= this.capacity) {
             this.capacity = capacity;
         }
         else {
-            throw new IllegalArgumentException("Capacity must be positive.");
+            throw new IllegalArgumentException("Capacity must be positive and less than/equal to current capacity.");
         }
 
         if (fuelLevel >= 0.0) {
@@ -43,15 +43,69 @@ public class Bus {
         }
     }
 
-    //getter methods. this one gets all bus details
+    //TODO: getter methods. this one gets all bus details
     public String getBusDetails() {
         return "f";
 
     }
+    
+    public String getBusID() {
+        return this.busID;
+    }
+
+    public int getCapacity() {
+        return this.capacity;
+    }
+
+    public double getFuelLevel() {
+        return this.fuelLevel;
+    }
+
+    public String getFuelType() {
+        return this.fuelType;
+    }
 
     //setter methods with validation
+    //TODO: decide whether we can update all bus' details or just bit by bit
+    public void setBusID(String busID) {
+        if (busID.matches("[0-9]{8}")) {
+            this.busID = busID;
+        }
+        else {
+            throw new IllegalArgumentException("busID must be exactly 8 numeric characters");
+        }
+    }
 
-    //check if driver can drive this bus - here or in bus repo?
+    public void setCapacity(int capacity) {
+        if (capacity > 0) {
+            this.capacity = capacity;
+        }
+        else {
+            throw new IllegalArgumentException("Capacity must be a positive value.");
+        }
+    }
+
+    public void setFuelLevel(double fuelLevel) {
+        if (fuelLevel >= 0.0) {
+            this.fuelLevel = fuelLevel;
+        }
+        else {
+            throw new IllegalArgumentException("Fuel level must be a non-negative number.");
+        }
+    }
+
+    public void setFuelType(String fuelType) {
+        if (fuelType == "Diesel" || fuelType == "Hybrid"  || fuelType == "Electricity" ) {
+            this.fuelType = fuelType;
+        }
+        else {
+            throw new IllegalArgumentException("Fuel type must be either Diesel, Hybrid, or Electricity.");
+        }
+    }
+
+
+    //TODO: check if driver can drive this bus - here or in bus repo?
+    //      ALSO check driver age, if >5 experience, if correct license
 
 
 }

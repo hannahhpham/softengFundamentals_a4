@@ -1,6 +1,6 @@
 package com.busdriver;
 
 //activity 1.1
-public class DriverRepository {
+public class DriverRepositoryTest {
     
 }
