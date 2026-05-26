@@ -70,21 +70,23 @@ public class Bus {
 
     //setter methods with validation
     //TODO: decide whether we can update all bus' details or just bit by bit
-    public void setBusID(String busID) {
-        if (busID.matches("[0-9]{8}")) {
-            this.busID = busID;
-        }
-        else {
-            throw new IllegalArgumentException("busID must be exactly 8 numeric characters");
-        }
-    }
+    
+    //professor mentioned that not changing the bus id after object construction was ok
+    // public void setBusID(String busID) {
+    //     if (busID.matches("[0-9]{8}")) {
+    //         this.busID = busID;
+    //     }
+    //     else {
+    //         throw new IllegalArgumentException("busID must be exactly 8 numeric characters");
+    //     }
+    // }
 
     public void setCapacity(int capacity) {
         if (capacity > 0 && capacity <= this.capacity) {
             this.capacity = capacity;
         }
         else {
-            throw new IllegalArgumentException("Capacity must be a positive value.");
+            throw new IllegalArgumentException("Capacity must be positive and less than/equal to current capacity.");
         }
     }
 
