@@ -35,7 +35,10 @@ public class Bus {
             throw new IllegalArgumentException("Fuel must be empty or positive.");
         }
 
-        if (fuelType.equals("Diesel") || fuelType.equals("Hybrid")  || fuelType.equals("Electricity") ) {
+        if (fuelType.toLowerCase().equals("diesel") || 
+        fuelType.toLowerCase().equals("hybrid")  || 
+        fuelType.toLowerCase().equals("electricity") ) {
+            
             this.fuelType = fuelType;
         }
         else {
@@ -43,11 +46,11 @@ public class Bus {
         }
     }
 
-    //TODO: get all bus details. check with anna and sanika how it should be formatted
-    public String getBusDetails() {
-        return "f";
+    //TODO: get all bus details? or leave this to busRepo
+    // public String getBusDetails() {
+    //     return "f";
 
-    }
+    // }
     
     public String getBusID() {
         return this.busID;
@@ -95,8 +98,13 @@ public class Bus {
     }
 
     public void setFuelType(String fuelType) {
-        if (fuelType.equals("Diesel") || fuelType.equals("Hybrid")  || fuelType.equals("Electricity") ) {
+        
+        if (fuelType.toLowerCase().equals("diesel") || 
+        fuelType.toLowerCase().equals("hybrid")  || 
+        fuelType.toLowerCase().equals("electricity") ) {
+            
             this.fuelType = fuelType;
+
         }
         else {
             throw new IllegalArgumentException("Fuel type must be either Diesel, Hybrid, or Electricity.");
@@ -114,7 +122,7 @@ public class Bus {
     }
 
     public boolean checkExperience(Driver driver) {
-        if (driver.getExperienceYears() < 5 && this.fuelType.equals("Electricity")) {
+        if (driver.getExperienceYears() < 5 && this.fuelType.toLowerCase().equals("electricity")) {
             return false;
         }
         else {
@@ -123,9 +131,13 @@ public class Bus {
     }
 
     public boolean checkLicense(Driver driver) {
-        if (this.fuelType.equals("Electricity") || this.fuelType.equals("Hybrid")) {
-            if (driver.getLicenseType().equals("Heavy") || driver.getLicenseType().equals("PublicTransport")) {
-            return true;
+        if (this.fuelType.toLowerCase().equals("electricity") || 
+        this.fuelType.toLowerCase().equals("hybrid")) {
+                
+            if (driver.getLicenseType().toLowerCase().equals("heavy") || 
+                driver.getLicenseType().toLowerCase().equals("publictransport")) {
+                    
+                return true;
             }
             else {
                 return false;

@@ -12,11 +12,30 @@ import static org.junit.jupiter.api.Assertions.*;
 //activity 1.1
 public class BusTest {
     
-    @Test 
-    @DisplayName("a new Bus object should NOT be created with incorrect parameters")
+    @Test //description: a new Bus object should NOT be created with incorrect parameters
     void shouldThrowConstructorError() {
-        assertThrows(IllegalArgumentException.class, 
-                    () -> new Bus("0", -1, -1.0, "incorrect") );
+        Exception error = assertThrows(IllegalArgumentException.class, 
+                          () -> new Bus("0", -1, -1.0, "incorrect") );
+        System.out.println("Exception thrown: " + error.getMessage());
+      
+    }
+
+    @Test //description: a new Bus object should  be created with correct parameters
+    void shouldCreateBus() {
+        // Bus busTest = new Bus("12345678", 20, 20.0, "diesel");
+        // assertNotNull(busTest);
+
+        Bus result = assertDoesNotThrow(() -> {
+            return new Bus("12345678", 20, 20.0, "diesel");
+        });
+
+        if (result != null) {
+            System.out.println("Bus was successfully created");
+        } 
+        else {
+            System.out.println("Bus was not created");
+        }
+      
     }
     
 }
