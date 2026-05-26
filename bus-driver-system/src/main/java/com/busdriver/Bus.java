@@ -43,7 +43,7 @@ public class Bus {
         }
     }
 
-    //TODO: getter methods. this one gets all bus details
+    //TODO: get all bus details. check with anna and sanika how it should be formatted
     public String getBusDetails() {
         return "f";
 
@@ -104,9 +104,6 @@ public class Bus {
     }
 
     //special methods as outlines in restrictions
-    //TODO: check if driver can drive this bus - here or in bus repo?
-    //      ALSO check driver age, if >5 experience, if correct license
-
     public boolean checkDriverAge(Driver driver) {
         if (driver.getAge() > 50 && this.capacity >= 50) {
             return false;
@@ -126,8 +123,13 @@ public class Bus {
     }
 
     public boolean checkLicense(Driver driver) {
-        if (driver.getLicenseType().equals("Heavy") || driver.getLicenseType().equals("PublicTransport")) {
+        if (this.fuelType.equals("Electricity") || this.fuelType.equals("Hybrid")) {
+            if (driver.getLicenseType().equals("Heavy") || driver.getLicenseType().equals("PublicTransport")) {
             return true;
+            }
+            else {
+                return false;
+            }
         }
         else {
             return false;
