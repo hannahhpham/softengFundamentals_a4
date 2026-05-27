@@ -89,52 +89,110 @@ public class BusTest {
 
         Bus busTest = new Bus("11223344", 50, 99.44, "hybrid");
         
+        assertTrue(busTest.checkDriverAge(driverTest));
+        System.out.println("Bus driver aged 49 is able to drive a bus with capacity 50");
 
     }
 
     @Test //test 9 description: drivers older than 50 should not be able to drive buses with capacity 50 or more.
     void shouldApproveDriverAge2() {
+        Driver driverTest = new Driver("39-1111-AZ", "Sally", 10, "PublicTransport",  
+            "101 | Collins St | Melbourne | Victoria | Australia" , "01-05-2000", 50);
+
+        Bus busTest = new Bus("11223344", 52, 99.44, "hybrid");
+        
+        assertTrue(busTest.checkDriverAge(driverTest));
+        System.out.println("Bus driver aged 50 is able to drive a bus with capacity 52");
 
     }
 
     @Test //test 10 description: drivers that are 50 should not be able to drive buses with capacity 50 or more.
     void shouldNotApproveDriverAge() {
+        Driver driverTest = new Driver("49-1111-AZ", "Sally", 10, "PublicTransport",  
+            "101 | Collins St | Melbourne | Victoria | Australia" , "01-05-2000", 51);
+
+        Bus busTest = new Bus("11223344", 51, 99.44, "hybrid");
+        
+        assertFalse(busTest.checkDriverAge(driverTest));
+        System.out.println("Bus driver aged 51 is not able to drive a bus with capacity 50");
 
     }
 
     @Test //test 11 description: checks if drivers with 5 years of experience are approved to drive electric buses
     void shouldApproveDriverExp() {
+        Driver driverTest = new Driver("49-1a11-AZ", "Sally", 5, "PublicTransport",  
+            "101 | Collins St | Melbourne | Victoria | Australia" , "01-05-2000", 51);
 
+        Bus busTest = new Bus("11223344", 51, 99.44, "electricity");
+        
+        assertTrue(busTest.checkExperience(driverTest));
+        System.out.println("Bus driver with 5 years of experience is able to drive the electric bus");
     }
 
     @Test //test 12 description: checks if drivers with less than 5 years of experience are not approved to drive electric buses
     void shouldApproveDriverExp2() {
+        Driver driverTest = new Driver("49-1b11-AZ", "Sally", 6, "PublicTransport",  
+            "101 | Collins St | Melbourne | Victoria | Australia" , "01-05-2000", 51);
 
+        Bus busTest = new Bus("11223344", 51, 99.44, "electricity");
+        
+        assertTrue(busTest.checkExperience(driverTest));
+        System.out.println("Bus driver with 6 years of experience is able to drive the electric bus");
     }
 
     @Test //test 13 description: checks if drivers with more than 5 years of experience are approved to drive electric buses
     void shouldNotApproveDriverExp() {
+        Driver driverTest = new Driver("49-1c11-AZ", "Sally", 4, "PublicTransport",  
+            "101 | Collins St | Melbourne | Victoria | Australia" , "01-05-2000", 50);
 
+        Bus busTest = new Bus("11223344", 51, 99.44, "electricity");
+        
+        assertFalse(busTest.checkExperience(driverTest));
+        System.out.println("Bus driver with 4 years of experience is not able to drive the electric bus");
     }
 
     @Test //test 14 description: checks if drivers with Heavy licenses are approved to drive electric buses
     void shouldApproveHeavyLicense() {
+        Driver driverTest = new Driver("49-1111-AA", "Sally", 6, "Heavy",  
+            "101 | Collins St | Melbourne | Victoria | Australia" , "01-05-2000", 50);
 
+        Bus busTest = new Bus("11223344", 51, 99.44, "electricity");
+        
+        assertTrue(busTest.checkLicense(driverTest));
+        System.out.println("Bus driver with Heavy license is able to drive electric bus");
     }
 
     @Test //test 15 description: checks if drivers with Public Transport licenses are approved to drive hybrid buses
     void shouldApprovePublicTransportLicense() {
+        Driver driverTest = new Driver("49-1111-AY", "Sally", 6, "PublicTransport",  
+            "101 | Collins St | Melbourne | Victoria | Australia" , "01-05-2000", 50);
 
+        Bus busTest = new Bus("11223344", 51, 99.44, "electricity");
+        
+        assertTrue(busTest.checkLicense(driverTest));
+        System.out.println("Bus driver with Public Transport license is able to drive hybrid bus");
     }
 
     @Test //test 16 description: checks if drivers with Light licenses are NOT approved to drive electric buses
     void shouldNotApproveLightLicense() {
+        Driver driverTest = new Driver("49-1111-AB", "Sally", 6, "Light",  
+            "101 | Collins St | Melbourne | Victoria | Australia" , "01-05-2000", 50);
 
+        Bus busTest = new Bus("11223344", 51, 99.44, "electricity");
+        
+        assertFalse(busTest.checkLicense(driverTest));
+        System.out.println("Bus driver with Light license is not able to drive electric bus");
     }
 
     @Test //test 17 description: checks if drivers with Medium licenses are NOT approved to drive hybrid buses
     void shouldNotApproveMediumLicense() {
+        Driver driverTest = new Driver("49-1111-AC", "Sally", 6, "Medium",  
+            "101 | Collins St | Melbourne | Victoria | Australia" , "01-05-2000", 50);
 
+        Bus busTest = new Bus("11223344", 51, 99.44, "hybrid");
+        
+        assertFalse(busTest.checkLicense(driverTest));
+        System.out.println("Bus driver with Medium license is not able to drive hybrid bus");
     }
 
 

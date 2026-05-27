@@ -138,7 +138,6 @@ public class Bus {
                 
             if (driver.getLicenseType().toLowerCase().equals("heavy") || 
                 driver.getLicenseType().toLowerCase().equals("publictransport")) {
-                    
                 return true;
             }
             else {
