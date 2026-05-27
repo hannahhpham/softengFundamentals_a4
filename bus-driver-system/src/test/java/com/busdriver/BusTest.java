@@ -80,55 +80,62 @@ public class BusTest {
         
     }
 
-    // @Test //test 8 description: drivers less than 50 should  be able to drive buses with capacity 50 or more.
-    // void shouldApproveDriverAge() {
+    //PLEASE NOTE: the following unit tests use the Driver class.
 
-    // }
+    @Test //test 8 description: drivers less than 50 should  be able to drive buses with capacity 50 or more.
+    void shouldApproveDriverAge() {
+        Driver driverTest = new Driver("29-1111-AZ", "Sally", 10, "PublicTransport",  
+            "101 | Collins St | Melbourne | Victoria | Australia" , "01-05-2000", 49);
 
-    // @Test //test 9 description: drivers older than 50 should not be able to drive buses with capacity 50 or more.
-    // void shouldApproveDriverAge2() {
+        Bus busTest = new Bus("11223344", 50, 99.44, "hybrid");
+        
 
-    // }
+    }
 
-    // @Test //test 10 description: drivers that are 50 should not be able to drive buses with capacity 50 or more.
-    // void shouldNotApproveDriverAge() {
+    @Test //test 9 description: drivers older than 50 should not be able to drive buses with capacity 50 or more.
+    void shouldApproveDriverAge2() {
 
-    // }
+    }
 
-    // @Test //test 11 description: checks if drivers with 5 years of experience are approved to drive electric buses
-    // void shouldApproveDriverExp() {
+    @Test //test 10 description: drivers that are 50 should not be able to drive buses with capacity 50 or more.
+    void shouldNotApproveDriverAge() {
 
-    // }
+    }
 
-    // @Test //test 12 description: checks if drivers with less than 5 years of experience are not approved to drive electric buses
-    // void shouldApproveDriverExp2() {
+    @Test //test 11 description: checks if drivers with 5 years of experience are approved to drive electric buses
+    void shouldApproveDriverExp() {
 
-    // }
+    }
 
-    // @Test //test 13 description: checks if drivers with more than 5 years of experience are approved to drive electric buses
-    // void shouldNotApproveDriverExp() {
+    @Test //test 12 description: checks if drivers with less than 5 years of experience are not approved to drive electric buses
+    void shouldApproveDriverExp2() {
 
-    // }
+    }
 
-    // @Test //test 14 description: checks if drivers with Heavy licenses are approved to drive electric buses
-    // void shouldApproveHeavyLicense() {
+    @Test //test 13 description: checks if drivers with more than 5 years of experience are approved to drive electric buses
+    void shouldNotApproveDriverExp() {
 
-    // }
+    }
 
-    // @Test //test 15 description: checks if drivers with Public Transport licenses are approved to drive hybrid buses
-    // void shouldApprovePublicTransportLicense() {
+    @Test //test 14 description: checks if drivers with Heavy licenses are approved to drive electric buses
+    void shouldApproveHeavyLicense() {
 
-    // }
+    }
 
-    // @Test //test 16 description: checks if drivers with Light licenses are NOT approved to drive electric buses
-    // void shouldNotApproveLightLicense() {
+    @Test //test 15 description: checks if drivers with Public Transport licenses are approved to drive hybrid buses
+    void shouldApprovePublicTransportLicense() {
 
-    // }
+    }
 
-    // @Test //test 17 description: checks if drivers with Medium licenses are NOT approved to drive hybrid buses
-    // void shouldNotApproveMediumLicense() {
+    @Test //test 16 description: checks if drivers with Light licenses are NOT approved to drive electric buses
+    void shouldNotApproveLightLicense() {
 
-    // }
+    }
+
+    @Test //test 17 description: checks if drivers with Medium licenses are NOT approved to drive hybrid buses
+    void shouldNotApproveMediumLicense() {
+
+    }
 
 
     
