@@ -73,7 +73,7 @@ public class BusRepository {
         }        
     }
 
-    public void updateBusFuelLevel(int busID, double fuelLevel){
+    public void updateBusFuelLevel(String busID, double fuelLevel){
         //Find bus with id
         //Loops through each obj in bus array
         for (Bus bus : busRepo){

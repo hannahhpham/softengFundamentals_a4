@@ -45,12 +45,6 @@ public class Bus {
             throw new IllegalArgumentException("Fuel must be either electricity, hybrid, or diesel.");
         }
     }
-
-    //TODO: get all bus details? or leave this to busRepo
-    // public String getBusDetails() {
-    //     return "f";
-
-    // }
     
     public String getBusID() {
         return this.busID;
@@ -69,7 +63,6 @@ public class Bus {
     }
 
     //setter methods with validation
-    //TODO: decide whether we can update all bus' details or just bit by bit
     
     //professor mentioned that not changing the bus id after object construction was ok
     // public void setBusID(String busID) {
