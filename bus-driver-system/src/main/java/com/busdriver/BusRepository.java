@@ -8,12 +8,6 @@ public class BusRepository {
     // Add (), Update (), Retrieve (), Count () functions
     //busID needs to be unique. bus capacity can't increase during update but can decrease.
      //check spec for more details on restrictions
-
-     //Checks if add bus contains the same id
-    //https://stackoverflow.com/questions/7481346/finding-out-if-a-list-of-objects-contains-something-with-a-specified-field-value
-    
-    //Finds objs based on field
-    //https://www.baeldung.com/find-list-element-java    
     
     ArrayList<Bus> busRepo = new ArrayList<Bus>();
     

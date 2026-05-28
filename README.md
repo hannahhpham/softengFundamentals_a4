@@ -19,3 +19,6 @@ Repository to store code for Software Engineering Fundamentals (Assignment 4). G
 # References used in this assignment include:
 - “Assertions (JUnit 5.0.1 API),” Junit.org, Oct. 03, 2017. https://docs.junit.org/5.0.1/api/org/junit/jupiter/api/Assertions.html (accessed May 26, 2026).
 ‌
+- Sergey (2011). Finding out if a list of Objects contains something with a specified field value? [online] Stack Overflow. Available at: https://stackoverflow.com/questions/7481346/finding-out-if-a-list-of-objects-contains-something-with-a-specified-field-value [Accessed 28 May 2026].
+    
+- baeldung (2018). Baeldung. [online] Baeldung. Available at: https://www.baeldung.com/find-list-element-java [Accessed 28 May 2026].
