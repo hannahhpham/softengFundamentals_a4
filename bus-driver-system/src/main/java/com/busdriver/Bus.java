@@ -1,10 +1,13 @@
 package com.busdriver;
 
 //references:
+
+import java.io.Serializable;
+
 //“How to Throw Exceptions in Java,” Rollbar, Nov. 29, 2025. https://rollbar.com/guides/java/how-to-throw-exceptions-in-java/ (accessed May 22, 2026).
 //helpful to store json data https://stackoverflow.com/questions/58988210/storing-data-in-json-file-using-java
 
-public class Bus {
+public class Bus implements Serializable {
     private String busID; 
     private int capacity; 
     private double fuelLevel; 
