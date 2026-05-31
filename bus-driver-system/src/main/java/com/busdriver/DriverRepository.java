@@ -16,7 +16,7 @@ public class DriverRepository {
         boolean idTaken = driverRepo.stream().anyMatch(d -> getDriverID().equals(driver.getDriverID()));
 
         if (idTaken){
-            throw new IllegalArgumentException(s: "DriverID already taken");
+            throw new IllegalArgumentException("DriverID already taken");
         }
         else{
             driverRepo.add(driver);
@@ -57,8 +57,8 @@ public class DriverRepository {
 
     //Update birthdate
     public void updateDriverBirthdate(String driverID, String newBirthDate){
-        for (driver.getdriverID().equals(driverID)){
-            if (driver.getDriverID().equals(diverID)){
+        for (Driver driver : driverRepo){
+            if (driver.getDriverID().equals(driverID)){
             driver.updateDriverInfo(driver.getExperienceYears(), driver.getLicenseType(), driver.getAddress(), newBirthDate, driver.getAge());
             return;
             }
