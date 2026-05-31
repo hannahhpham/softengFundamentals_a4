@@ -171,4 +171,20 @@ public class Driver {
         return this.licenseType;
     }
 
+    //added methods (sanika)
+    public String getDriverID() {
+        return driverID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return aaddress;
+    }
+
+    public String getBirthDate() {
+        return birthdate;
+    }
 } 
