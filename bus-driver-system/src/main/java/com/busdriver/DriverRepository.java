@@ -10,6 +10,7 @@ public class DriverRepository {
 
     ArrayList<Driver> driverRepo = new ArrayList<Driver>();
 
+    //Add driver, checks if driver id is same as another one
     public void addDriver(Driver driver){
         //Ensures driver ID is unique
         boolean idTaken = driverRepo.stream().anyMatch(d -> getDriverID().equals(driver.getDriverID()));
@@ -21,4 +22,52 @@ public class DriverRepository {
             driverRepo.add(driver);
         }
     }
+
+    //Get driver object
+    public Driver getDriver(String driverID){
+        for (Driver driver:driverRepo){
+            if (driver.getDriverID().equals(driverID)){
+                return driver;
+            }
+        }
+        throw new IllegalArgumentException("Driver not found");
+    }
+
+    //Update address
+    public void updateDriverAddress(String driverID, String newAddress){
+        for (Driver driver: driverRepo){
+            if (driver.getDriverID().equals(driverID)){
+                driver.updateDriverInfo(driver.getExperienceYears(), driver.getLicenseType(), newAddress, driver.getBirthdate() , driver.getAge());
+                return;
+            }
+        }
+        throw new IllegalArgumentException("Driver not found");
+    }
+
+    //Update experience and license type
+    public void updateDriverExperienceAndLicense(String driverID, int experienceYears, String licenseType){
+        for (Driver driver:driverRepo){
+            if (driver.getDriverID().equals(driverID)){
+                driver.updateDriverInfo(experienceYears, licenseType, driver.getAddress(), driver.getBirthdate(), driver.getAge());
+                return;
+            }
+        }
+        throw new IllegalArgumentException("Driver not found");
+    }
+
+    //Update birthdate
+    public void updateDriverBirthdate(String driverID, String newBirthDate){
+        for (driver.getdriverID().equals(driverID)){
+            if (driver.getDriverID().equals(diverID)){
+            driver.updateDriverInfo(driver.getExperienceYears(), driver.getLicenseType(), driver.getAddress(), newBirthDate, driver.getAge());
+            return;
+            }
+        }
+    throw new IllegalArgumentException("Driver not found");
+    }
+
+    public int getDriverCount(){
+        return driverRepo.size();
+    }
 }
+
