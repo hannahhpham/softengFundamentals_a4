@@ -13,7 +13,7 @@ public class DriverRepository {
     //Add driver, checks if driver id is same as another one
     public void addDriver(Driver driver){
         //Ensures driver ID is unique
-        boolean idTaken = driverRepo.stream().anyMatch(d -> getDriverID().equals(driver.getDriverID()));
+        boolean idTaken = driverRepo.stream().anyMatch(d -> d.getDriverID().equals(driver.getDriverID()));
 
         if (idTaken){
             throw new IllegalArgumentException("DriverID already taken");
@@ -37,7 +37,7 @@ public class DriverRepository {
     public void updateDriverAddress(String driverID, String newAddress){
         for (Driver driver: driverRepo){
             if (driver.getDriverID().equals(driverID)){
-                driver.updateDriverInfo(driver.getExperienceYears(), driver.getLicenseType(), newAddress, driver.getBirthdate() , driver.getAge());
+                driver.updateDriverInfo(driver.getExperienceYears(), driver.getLicenseType(), newAddress, driver.getBirthDate() , driver.getAge());
                 return;
             }
         }
@@ -48,7 +48,7 @@ public class DriverRepository {
     public void updateDriverExperienceAndLicense(String driverID, int experienceYears, String licenseType){
         for (Driver driver:driverRepo){
             if (driver.getDriverID().equals(driverID)){
-                driver.updateDriverInfo(experienceYears, licenseType, driver.getAddress(), driver.getBirthdate(), driver.getAge());
+                driver.updateDriverInfo(experienceYears, licenseType, driver.getAddress(), driver.getBirthDate(), driver.getAge());
                 return;
             }
         }
