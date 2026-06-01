@@ -118,7 +118,7 @@ public class BusRepository {
                         throw new IllegalArgumentException("Capacity can not be larger than previous capacity");
                     }
                     //if bus capacity is negative
-                    else if (0 > capacity){
+                    else if (0 >= capacity){
                         throw new IllegalArgumentException("Capacity can not be negative");
                     }
                     else {
