@@ -1,14 +1,13 @@
 package com.busdriver;
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 public class BusRepository {
     // Add (), Update (), Retrieve (), Count () functions
     //busID needs to be unique. bus capacity can't increase during update but can decrease.
@@ -21,25 +20,34 @@ public class BusRepository {
         String currDirectory = new File(".").getAbsolutePath();
         File file = new File(currDirectory + "/src/main/java/com/busdriver/BusRepository.txt");
         List<Bus> buses = new ArrayList<>();
+
+        if (file.length() == 0) {
+            return new ArrayList<>();
+        }        
         //read repos
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))){
-            while (true) { 
+            while (true) {
                 try {
-                    //store as objs and then append to the arraylist
-                    Bus currBus = (Bus) ois.readObject();
-                    buses.add(currBus);
-                    //loop through objects and notify
-                    for (Bus b : buses) {
-                        System.out.println("Parsing object BusId: " + b.getBusID());
-                    }
+                    try {
+                        //store as objs and then append to the arraylist
+                        Bus currBus = (Bus) ois.readObject();
+                        buses.add(currBus);
+                        //loop through objects and notify
+                        for (Bus b : buses) {
+                            System.out.println("Parsing object BusId: " + b.getBusID());
+                        }
+                        //end of file reached
+                    } catch (EOFException e) {
+                        break;
+                    }                      
+                    
+            } catch (ClassNotFoundException e) {
+                System.out.print("Class not found: " + e.getMessage());
+            }                        
 
-
-                } catch (ClassNotFoundException e) {
-                    System.out.print("Class not found: " + e.getMessage());
-                }                
-            }
+            }                
         } catch (IOException e) {
-            System.out.println("File not found: " + e.getMessage());
+            System.out.println("Error reading repo: " + e.getMessage());
         }
         return buses;
     }
@@ -48,58 +56,54 @@ public class BusRepository {
     List<Bus> busRepo = readBusRepo();    
 
 
+    //save bus when updating
+    public void saveBusRepo(){
+        String currDirectory = new File(".").getAbsolutePath();
+        File file = new File(currDirectory + "/src/main/java/com/busdriver/BusRepository.txt");        
+
+        //busRepo.add(newBus);
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));){
+            for (Bus currBus : busRepo){
+                oos.writeObject(currBus);
+            }
+        } catch (IOException e) {
+            System.out.println("Serialisation Failed: " + e.getMessage());
+        }
+    }
+
     //Add bus check all details (if bus id is the same as another etc, )
     public void addBus(Bus bus){
+        List<String> fuelTypes = List.of("diesel", "electric", "hybrid");
+        boolean idTaken = busRepo.stream().anyMatch(b -> b.getBusID().equals(bus.getBusID()));
+        if (idTaken){
+            throw new IllegalArgumentException("BusID already taken");
+        }
+
+        busRepo.add(bus);
+
         String currDirectory = new File(".").getAbsolutePath();
-        File file = new File(currDirectory + "/src/main/java/com/busdriver/BusRepository.txt");
+        File file = new File(currDirectory + "/src/main/java/com/busdriver/BusRepository.txt");        
 
-        //Test if file is found
-        try {
-            Scanner scan = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            System.out.println("Exception thrown, file not found");
-        }
-
-        try {
-            //Check if any bus id in the repo share with the added one
-            //change this line as arraylist must be read from file whihc hasnt been done yet
-            String busId = bus.getBusID();
-            boolean idTaken = busRepo.stream().anyMatch(b -> b.getBusID().equals(busId));
-
-            if (idTaken){
-                throw new IllegalArgumentException("BusID already taken");
+        //busRepo.add(newBus);
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));){
+            for (Bus currBus : busRepo){
+                oos.writeObject(currBus);
             }
-            else {
-                //busRepo.add(newBus);
-                try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));){
-                    oos.writeObject(bus);
-                    oos.close();                    
-                } catch (IOException e) {
-                    System.out.println("Serialisation Failed: " + e.getMessage());
-                }
-
-            }            
-        } catch (Exception e) {
-            System.out.println("Exception caught: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Serialisation Failed: " + e.getMessage());
         }
+
     }
 
     //Retrieve bus object
     public Bus getBus(String busID){
         //Loops through each obj in bus array
         for (Bus bus : busRepo){
-            try {
-                if (bus.getBusID().equals(busID)){
-                    return bus;
-                }
-                else {
-                    throw new IllegalArgumentException("Bus not found");
-                }                
-            } catch (Exception e) {
-                System.out.println("Exception caught: " + e.getMessage());
-            }
+            if (bus.getBusID().equals(busID)){
+                return bus;           
         }
-        return null;
+       }
+        throw new IllegalArgumentException("Bus not found");
     }
 
     //Update based on field
@@ -114,21 +118,23 @@ public class BusRepository {
                         throw new IllegalArgumentException("Capacity can not be larger than previous capacity");
                     }
                     //if bus capacity is negative
-                    else if (0 < capacity){
+                    else if (0 > capacity){
                         throw new IllegalArgumentException("Capacity can not be negative");
                     }
                     else {
                         bus.setCapacity(capacity);
+                        saveBusRepo();
+                        return; 
                     }
                 }
-                else {
-                    throw new IllegalArgumentException("Bus not found");
-                }                
+            
             } catch (IllegalArgumentException e) {
                 //prints out message from the exceptions 
                 System.out.println("Exception caught: " + e.getMessage());
             }
         }        
+        throw new IllegalArgumentException("Bus not found");
+
     }
 
     public void updateBusFuelType(String busID, String fuelType){
@@ -138,6 +144,8 @@ public class BusRepository {
             try {
                 if (bus.getBusID().equals(busID)){
                     bus.setFuelType(fuelType);
+                    saveBusRepo();
+                    return;                     
                 }
                 else {
                     throw new IllegalArgumentException("Bus not found");
@@ -156,6 +164,8 @@ public class BusRepository {
             try {
                 if (bus.getBusID().equals(busID)){
                     bus.setFuelLevel(fuelLevel);
+                    saveBusRepo();
+                    return;                     
                 }
                 else {
                     throw new IllegalArgumentException("Bus not found");
@@ -167,7 +177,7 @@ public class BusRepository {
     }    
 
     public int getBusCount(){
-        return busRepo.size();
+        return this.busRepo.size();
     }
 
 
