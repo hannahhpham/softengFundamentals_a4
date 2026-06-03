@@ -124,8 +124,8 @@ public class DriverTest {
         assertNotNull(result);
          }
 
-         @Test // test 7: Valid birthdate should pass
-            void shouldCreateDriverWithValidBirthdate() {
+         @Test // test 7: Valid birth date should pass
+            void shouldCreateDriverWithValidBirthDate() {
         Driver result = assertDoesNotThrow(() -> {
             return new Driver(
                 "29kl#$MNGH",
@@ -139,11 +139,11 @@ public class DriverTest {
         });
 
         assertNotNull(result);
-        assertEquals("07-07-1955", result.getBirthdate());
+        assertEquals("07-07-1955", result.getBirthDate());
             }
     
         @Test // test 8: Invalid birthdate should throw an error
-          void shouldThrowErrorInvalidBirthdate() {
+          void shouldThrowErrorInvalidBirthDate() {
           Exception error = assertThrows(IllegalArgumentException.class, () -> {
             new Driver(
                 "32mn!@OPIJ",
@@ -159,8 +159,8 @@ public class DriverTest {
         System.out.println("Exception thrown: " + error.getMessage());
             }
 
-        @Test // test 9: Edge case for birthdate (e.g., very old birthdate) should pass
-            void shouldCreateDriverWithOldBirthdate() {
+        @Test // test 9: Edge case for birthdate (e.g. very old birthdate) should pass
+            void shouldCreateDriverWithOldBirthDate() {
           Driver result = assertDoesNotThrow(() -> {
             return new Driver(
                 "34op#$QRKL",
@@ -295,7 +295,7 @@ public class DriverTest {
       assertEquals(6, driverTest.getExperienceYears());
       assertEquals("Medium", driverTest.getLicenseType());
       assertEquals("456|New Street|Melbourne|VIC|Australia", driverTest.getAddress());
-      assertEquals("02-02-1980", driverTest.getBirthdate());
+      assertEquals("02-02-1980", driverTest.getBirthDate());
 
       }
 
