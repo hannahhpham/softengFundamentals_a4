@@ -2,21 +2,11 @@ package com.busdriver;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-// TEST ISSUES
-// 1. Tests for address is not in the correct format, so I will need to correct that 
-//    and potentially fix the driver.java code to match the correct format.
-// 2. Tests for immutable fields is also not in the correct format, and should
-//    match tests 1-3 in terms of updating unimmutable fields. (eg. remove setter methods)
-// 3. Tests will need to be run, ensuring correct outputs
-// 4. I need to add one more test to reach the required 15 test threshold, which will
-//    most likely just be a normal validation check   
-
-//activity 1.1
 public class DriverTest {
-     @Test // test 1: a valid Driver ID is created 
-     void shouldCreateDriverID() {
-         Driver result = assertDoesNotThrow(() -> {
-                return new Driver(
+    @Test // test 1: a valid Driver ID is created 
+    void shouldCreateDriverID() {
+        Driver result = assertDoesNotThrow(() -> {
+            return new Driver (
                 "23ab#$XYZA",
                 "John Doe",
                 5,
@@ -24,7 +14,7 @@ public class DriverTest {
                 "123|Main Street|Melbourne|VIC|Australia",
                 "01-01-1980",
                 55
-            );
+            ); 
         });
 
        assertNotNull(result);
@@ -33,15 +23,16 @@ public class DriverTest {
        assertEquals(5, result.getExperienceYears());
        assertEquals("Heavy", result.getLicenseType());
 
-      System.out.println("Test 1 results:");
-      System.out.println("Test passed: Valid Driver was created successfully.");
-      System.out.println("Driver ID: " + result.getDriverID());
-     }
+       System.out.println("Test 1 result:");
+       System.out.println("Test passed: Valid Driver was created successfully.");
+       System.out.println("Driver ID: " + result.getDriverID());
+       System.out.println();
+    }
 
-     @Test // test 2: an invalid Driver ID is not created
-     void shouldThrowErrorInvalidDriverID() {
+    @Test // test 2: an invalid Driver ID is not created
+    void shouldThrowErrorInvalidDriverID() {
         Exception error = assertThrows(IllegalArgumentException.class, () -> {
-            new Driver(
+            new Driver (
                 "invalidID",
                 "Jane Doe",
                 3,
@@ -52,13 +43,15 @@ public class DriverTest {
             );
         });
 
+        System.out.println("Test 2 result:");
         System.out.println("Exception thrown: " + error.getMessage());
+        System.out.println();
     }     
 
-     @Test // test 3: boundary value test for driver ID length (exactly 10 characters, and exactly 2 special characters)
-     void driverIDShouldPass() {
+    @Test // test 3: boundary value test for driver ID length (exactly 10 characters, and exactly 2 special characters)
+    void driverIDShouldPass() {
         Driver result = assertDoesNotThrow(() -> {
-            return new Driver(
+            return new Driver (
                 "24ab!@CDXY",
                 "Alice Smith",
                 10,
@@ -70,12 +63,16 @@ public class DriverTest {
         });
 
         assertNotNull(result);
-     }
+        System.out.println("Test 3 result:");
+        System.out.println("Test passed: Driver with valid ID was created successfully.");
+        System.out.println("Driver ID: " + result.getDriverID());
+        System.out.println();
+    }
 
-     @Test // test 4: Valid address should pass
-        void shouldCreateDriverWithValidAddress() {
+    @Test // test 4: Valid address should pass
+    void shouldCreateDriverWithValidAddress() {
         Driver result = assertDoesNotThrow(() -> {
-            return new Driver(
+            return new Driver (
                 "26ef!@GHAB",
                 "Diana Evans",
                 8,
@@ -87,13 +84,16 @@ public class DriverTest {
         });
 
         assertNotNull(result);
-        assertEquals("321|Pine Street|Melbourne|VIC|Australia", result.getAddress());
-        }
+        System.out.println("Test 4 result:");
+        System.out.println("Test passed: Driver with valid address was created successfully.");
+        System.out.println("Address: " + result.getAddress());
+        System.out.println();
+    }
 
-      @Test // test 5: Invalid address should throw an error
-        void shouldThrowErrorInvalidAddress() {
+    @Test // test 5: Invalid address should throw an error
+    void shouldThrowErrorInvalidAddress() {
         Exception error = assertThrows(IllegalArgumentException.class, () -> {
-            new Driver(
+            new Driver (
                 "27gh#$IJCD",
                 "Ethan Foster",
                 12,
@@ -104,13 +104,15 @@ public class DriverTest {
             );
         });
 
+        System.out.println("Test 5 result:");
         System.out.println("Exception thrown: " + error.getMessage());
-        }
+        System.out.println();
+    }
 
-        @Test // test 6: Very short address should pass (edge case)
-        void shouldCreateDriverWithShortAddress() {
+    @Test // test 6: Very short address should pass (edge case)
+    void shouldCreateDriverWithShortAddress() {
         Driver result = assertDoesNotThrow(() -> {
-            return new Driver(
+            return new Driver (
                 "28ij!@KLEF",
                 "Fiona Green",
                 15,
@@ -122,12 +124,16 @@ public class DriverTest {
         });
 
         assertNotNull(result);
-         }
+        System.out.println("Test 6 result:");
+        System.out.println("Test passed: Driver with short address was created successfully.");
+        System.out.println("Address: " + result.getAddress());
+        System.out.println();
+    }
 
-         @Test // test 7: Valid birth date should pass
-            void shouldCreateDriverWithValidBirthDate() {
+    @Test // test 7: Valid birth date should pass
+    void shouldCreateDriverWithValidBirthDate() {
         Driver result = assertDoesNotThrow(() -> {
-            return new Driver(
+            return new Driver (
                 "29kl#$MNGH",
                 "George Harris",
                 20,
@@ -138,14 +144,16 @@ public class DriverTest {
             );
         });
 
-        assertNotNull(result);
-        assertEquals("07-07-1955", result.getBirthDate());
-            }
+        System.out.println("Test 7 result:");
+        System.out.println("Test passed: Driver with valid birth date was created successfully.");
+        System.out.println("Birth Date: " + result.getBirthDate());
+        System.out.println();
+    }
     
-        @Test // test 8: Invalid birthdate should throw an error
-          void shouldThrowErrorInvalidBirthDate() {
+    @Test // test 8: Invalid birthdate should throw an error
+    void shouldThrowErrorInvalidBirthDate() {
           Exception error = assertThrows(IllegalArgumentException.class, () -> {
-            new Driver(
+            new Driver (
                 "32mn!@OPIJ",
                 "Hannah Johnson",
                 25,
@@ -154,15 +162,17 @@ public class DriverTest {
                 "invalidDate",
                 55
             );
-          });
+        });
 
+        System.out.println("Test 8 result:");
         System.out.println("Exception thrown: " + error.getMessage());
-            }
+        System.out.println();
+    }
 
-        @Test // test 9: Edge case for birthdate (e.g. very old birthdate) should pass
-            void shouldCreateDriverWithOldBirthDate() {
+    @Test // test 9: Edge case for birthdate (e.g. very old birthdate) should pass
+    void shouldCreateDriverWithOldBirthDate() {
           Driver result = assertDoesNotThrow(() -> {
-            return new Driver(
+            return new Driver (
                 "34op#$QRKL",
                 "Ian King",
                 30,
@@ -174,10 +184,15 @@ public class DriverTest {
         });
 
         assertNotNull(result);
-             }
 
-        @Test // Test 10: Driver with 10 or less years of experience can change lisense
-          void shouldAllowLicenseChange() {
+        System.out.println("Test 9 result:");
+        System.out.println("Test passed: Driver with old birth date was created successfully.");
+        System.out.println("Birth Date: " + result.getBirthDate());
+        System.out.println();
+    }
+
+    @Test // Test 10: Driver with 10 or less years of experience can change lisense
+    void shouldAllowLicenseChange() {
           Driver driver = new Driver(
               "35qr!@STMN",
               "Jack Lee",
@@ -188,20 +203,25 @@ public class DriverTest {
               55
           );
 
-          assertDoesNotThrow(() -> {
-              driver.updateDriverInfo(
-                  10,
-                  "Heavy",
-                  "456|New Street|Melbourne|VIC|Australia",
-                  "08-08-1980"
-              );
-          });
+        assertDoesNotThrow(() -> {
+            driver.updateDriverInfo(
+                10,
+                "Heavy",
+                "456|New Street|Melbourne|VIC|Australia",
+                "08-08-1980"
+            );
+        });
 
         assertEquals("Heavy", driver.getLicenseType());
-            }
 
-        @Test // Test 11: Driver with more than 10 years of experience cannot change license
-            void showErrorLicenseChange() {
+        System.out.println("Test 10 result:");
+        System.out.println("Test passed: Driver with 10 or less years of experience was able to change license successfully.");
+        System.out.println("New License Type: " + driver.getLicenseType());
+        System.out.println();
+    }
+
+    @Test // Test 11: Driver with more than 10 years of experience cannot change license
+    void showErrorLicenseChange() {
         Driver driver = new Driver(
             "36st#$UVOQ",
             "Liam Martin",
@@ -221,11 +241,13 @@ public class DriverTest {
             );
         });
 
+        System.out.println("Test 11 result:");
         System.out.println("Exception thrown: " + error.getMessage());
-            }
+        System.out.println();
+    }
 
-        @Test // test 12: Driver with exactly 10 years of experience should be able to change license
-            void shouldAllowLicenseChangeAt10Years() {
+    @Test // test 12: Driver with exactly 10 years of experience should be able to change license
+    void shouldAllowLicenseChangeAt10Years() {
         Driver driver = new Driver(
             "37uv!@WXRS",
             "Mia Wilson",
@@ -246,11 +268,15 @@ public class DriverTest {
         });
 
         assertEquals("Medium", driver.getLicenseType());
-            }
+        System.out.println("Test 12 result:");
+        System.out.println("Test passed: Driver with exactly 10 years of experience was able to change license successfully.");
+        System.out.println("New License Type: " + driver.getLicenseType());
+        System.out.println();
+    }
 
-        @Test // test 12: Updating non-immutable fields should pass
-            void shouldUpdateAddress() {
-        Driver driver = new Driver(
+    @Test // test 12: Updating non-immutable fields should pass
+    void shouldUpdateAddress() {
+        Driver driver = new Driver (
             "38wx#$YZTU",
             "Noah Taylor",
             5,
@@ -260,7 +286,7 @@ public class DriverTest {
             55
         );
 
-        driver.updateDriverInfo(
+        driver.updateDriverInfo (
             5,
             "Heavy",
             "456|New Street|Melbourne|VIC|Australia",
@@ -268,11 +294,15 @@ public class DriverTest {
         );
 
         assertEquals("456|New Street|Melbourne|VIC|Australia", driver.getAddress());
+        System.out.println("Test 13 result:");
+        System.out.println("Test passed: Driver address was updated successfully.");
+        System.out.println("New Address: " + driver.getAddress());
+        System.out.println();
     }
 
-        @Test // test 13: Changing driver name should fail (immutable field)
-        void shouldNotUpdateNameOrDriverIDDuringUpdate() {
-          Driver driverTest = new Driver(
+    @Test // test 13: Changing driver name should fail (immutable field)
+    void shouldNotUpdateName() {
+        Driver driverTest = new Driver (
         "49mn!@PQRS",
         "John Doe",
         5,
@@ -287,19 +317,76 @@ public class DriverTest {
         "Medium",
         "456|New Street|Melbourne|VIC|Australia",
         "02-02-1980"
-    );
+        );
 
-      assertEquals("49mn!@PQRS", driverTest.getDriverID());
-      assertEquals("John Doe", driverTest.getName());
+       assertEquals("49mn!@PQRS", driverTest.getDriverID());
+       assertEquals("John Doe", driverTest.getName());
 
-      assertEquals(6, driverTest.getExperienceYears());
-      assertEquals("Medium", driverTest.getLicenseType());
-      assertEquals("456|New Street|Melbourne|VIC|Australia", driverTest.getAddress());
-      assertEquals("02-02-1980", driverTest.getBirthDate());
+       assertEquals(6, driverTest.getExperienceYears());
+       assertEquals("Medium", driverTest.getLicenseType());
+       assertEquals("456|New Street|Melbourne|VIC|Australia", driverTest.getAddress());
+       assertEquals("02-02-1980", driverTest.getBirthDate());
 
-      }
-
+       System.out.println("Test 13 result:");
+       System.out.println("Test failed: Immutable fields (Driver ID and Name) were not updated during updateDriverInfo.");
+       System.out.println("Driver Name: " + driverTest.getName());
+       System.out.println();
     }
+
+    @Test // test 14: driver ID is not modified (immutable field)
+    void shouldNotUpdateID() {
+        Driver driverTest = new Driver (
+        "45yz#$ABCD",
+        "John Doe",
+        5,
+        "Heavy",
+        "123|Main Street|Melbourne|VIC|Australia",
+        "01-01-1980",
+        55
+        );
+
+        driverTest.updateDriverInfo(
+        6,
+        "Medium",
+        "456|New Street|Melbourne|VIC|Australia",
+        "02-02-1980"
+        );
+
+       assertEquals("45yz#$ABCD", driverTest.getDriverID());
+       assertEquals("John Doe", driverTest.getName());
+
+       assertEquals(6, driverTest.getExperienceYears());
+       assertEquals("Medium", driverTest.getLicenseType());
+       assertEquals("456|New Street|Melbourne|VIC|Australia", driverTest.getAddress());
+       assertEquals("02-02-1980", driverTest.getBirthDate());
+
+       System.out.println("Test 14 result:");
+       System.out.println("Test failed: Driver ID was not updated.");
+       System.out.println("Driver ID: " + driverTest.getDriverID());
+       System.out.println();
+    }
+
+    @Test // test 15: Invalid ID where last two characters are in lowercase
+    // edge case lol
+    void shouldRejectInvalidID() {
+        Exception error = assertThrows(IllegalArgumentException.class, () -> {
+            new Driver (
+                "49mn!@PQrs",
+                "John Doe",
+                5,
+                "Heavy",
+                "123|Main Street|Melbourne|VIC|Australia",
+                "01-01-1980",
+                55
+            );
+        });
+
+        System.out.println("Test 15 result:");
+        System.out.println("Exception thrown: " + error.getMessage());
+        System.out.println();
+    }
+
+}
 
     
 

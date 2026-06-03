@@ -10,21 +10,21 @@ public class Driver {
     private int experienceYears; 
     private String licenseType; // Light, Medium, Heavy, PublicTransport 
     private String address; 
-    private String birthdate; 
+    private String birthDate; 
     private int age;
 
 
     // D1: driverID must be unique
     private static Set<String> existingDriverIDs = new HashSet<>();
 
-    public Driver(String driverID, String name, int experienceYears, String licenseType, String address, String birthdate, int age) {
+    public Driver(String driverID, String name, int experienceYears, String licenseType, String address, String birthDate, int age) {
         
         // Validate and set normal fields
         setName(name);
         setExperienceYears(experienceYears);
         setLicenseType(licenseType);
         setAddress(address);
-        setBirthdate(birthdate);
+        setBirthDate(birthDate);
         // as per bus guideline
         setAge(age);
 
@@ -32,7 +32,7 @@ public class Driver {
         setDriverID(driverID);
     }
 
-    // getters
+    // getter methods
 
     public String getDriverID() {
        return driverID;
@@ -55,14 +55,12 @@ public class Driver {
     }
 
     public String getBirthDate() {
-        return birthdate;
+        return birthDate;
     }
 
     public int getAge() {
         return age;
     }
-
-    // Private setters for immutable fields
 
     // D5: driverID cannot be modified after creation
     private void setDriverID(String driverID) {
@@ -87,7 +85,7 @@ public class Driver {
         this.name = name;
     }
 
-    // Private setters for fields that can be updated through updateDriverInfo()
+    // Private setters for fields that can be updated  
 
     private void setExperienceYears(int experienceYears) {
         if (experienceYears < 0) {
@@ -113,12 +111,12 @@ public class Driver {
         this.address = address;
     }
 
-    private void setBirthdate(String birthdate) {
-        if (!isValidBirthdate(birthdate)) {
+    private void setBirthDate(String birthDate) {
+        if (!isValidBirthDate(birthDate)) {
             throw new IllegalArgumentException("Invalid birthdate format.");
         }
 
-        this.birthdate = birthdate;
+        this.birthDate = birthDate;
     }
 
     private void setAge(int age) {
@@ -131,7 +129,7 @@ public class Driver {
 
     // D4: License Update Restriction
     public void updateDriverInfo(int experienceYears, String licenseType,
-                                 String address, String birthdate) {
+                                 String address, String birthDate) {
 
         // If current driver has more than 10 years experience,
         // their license type cannot be changed
@@ -144,7 +142,7 @@ public class Driver {
         setExperienceYears(experienceYears);
         setLicenseType(licenseType);
         setAddress(address);
-        setBirthdate(birthdate);
+        setBirthDate(birthDate);
     }
 
     // D1: Driver ID validation
@@ -224,13 +222,13 @@ public class Driver {
     }
 
     // D3: Birthdate Format
-    private boolean isValidBirthdate(String birthdate) {
-        if (birthdate == null || birthdate.isEmpty()) {
+    private boolean isValidBirthDate(String birthDate) {
+        if (birthDate == null || birthDate.isEmpty()) {
             return false;
         }
 
         // Format: DD-MM-YYYY
-        return birthdate.matches("\\d{2}-\\d{2}-\\d{4}");
+        return birthDate.matches("\\d{2}-\\d{2}-\\d{4}");
     }
 
     private boolean isValidLicenseType(String licenseType) {
@@ -246,38 +244,3 @@ public class Driver {
 }
         
         
-
-
-    
-    //note from hannah: im adding these methods in cuz i need them for the bus class
-    //this function probably doesn't need to exist the way ive done it (by returning the age variable).
-    //in reality, getAge() should probably be currDate-birthdate 
-    /** 
-    public int getAge() {
-        return this.age;
-    }
-
-    public int getExperienceYears() {
-        return this.experienceYears;
-    }
-
-    public String getLicenseType() {
-        return this.licenseType;
-    }
-
-    //added methods (sanika)
-    public String getDriverID() {
-        return driverID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getBirthDate() {
-        return birthdate;
-    */
