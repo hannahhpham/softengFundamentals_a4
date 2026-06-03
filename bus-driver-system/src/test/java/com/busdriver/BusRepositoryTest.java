@@ -26,9 +26,9 @@ public class BusRepositoryTest {
             System.out.println("Retrieving bus with ID: 87654321");
             System.out.println("BUS ID: " + retrieveBus.getBusID() + ", capacity: " + retrieveBus.getCapacity() + 
             ", fuelLevel: " + retrieveBus.getFuelLevel() + ", fuelType: " + retrieveBus.getFuelType() );            
-            System.out.println("Test 1 Passed: Added and retrieved bus");
+            System.out.println("Test 1 Passed: Added and retrieved bus\n");
         } catch (Exception e) {
-            System.out.println("Test 1 Failed");
+            System.out.println("Test 1 Failed\n");
         }
     }
 
@@ -40,7 +40,7 @@ public class BusRepositoryTest {
             Bus b2 = new Bus("8765432", -50, -20, "fiesel");    
             busRepo.addBus(b2);
         } catch (Exception e) {
-            System.out.println("Test 2 Passed: Bus was throw out");
+            System.out.println("Test 2 Passed: Bus was throw out\n");
         }
     
     }
@@ -65,9 +65,9 @@ public class BusRepositoryTest {
                 Bus b3Updated = busRepo.getBus("04052016");
                 System.out.println("UPDATED DETAILS: ");            
                 System.out.println("Bus ID: " + b3Updated.getBusID() + ", capacity: " + b3Updated.getCapacity() + ", fuelLevel: " + b3Updated.getFuelLevel() + ", fuelType: " + b3Updated.getFuelType());
-                System.out.println("Test 3 passed");
+                System.out.println("Test 3 passed\n");
             } catch (Exception e) {
-                System.out.println("Test 3 failed, unable to update bus");
+                System.out.println("Test 3 failed, unable to update bus\n");
 
             }
 
@@ -99,9 +99,9 @@ public class BusRepositoryTest {
                 busRepo.addBus(b3);
                 busRepo.addBus(b4);
 
-                System.out.println("Added two more buses repo count: " + busRepo.getBusCount());
+                System.out.println("Added two more buses repo count: " + busRepo.getBusCount() +"\n");
             } catch (Exception e) {
-                System.out.println("Error when adding more buses");
+                System.out.println("Error when adding more buses\n");
             }        
 
     }
