@@ -54,7 +54,7 @@ public class Driver {
         return address;
     }
 
-    public String getBirthdate() {
+    public String getBirthDate() {
         return birthdate;
     }
 
