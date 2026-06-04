@@ -21,7 +21,7 @@ public class DriverIntegrationTest {
         System.out.println("Running Test 1");
         System.out.println("Adding valid driver with ID: 23ab#$XYZA, name: John Doe, experience: 5, license: Heavy");
 
-        Driver d1 = new Driver("23ab#$XYZA", "John Doe", 5, "Heavy", "123|Main Street|Melbourne|VIC|Australia","01-01-1980",55);
+        Driver d1 = new Driver("23ab#$XYZA", "John Doe", 5, "Heavy", "123 | Main Street | Melbourne | VIC | Australia", "01-01-1980", 55);
         driverRepo.addDriver(d1);
 
         DriverRepository reloadedRepo = new DriverRepository();
@@ -40,7 +40,7 @@ public class DriverIntegrationTest {
         System.out.println("Running Test 2");
 
         try {
-            Driver d1 = new Driver ("invalidID", "Jane Doe", 3, "Light", "456|Elm Street|Melbourne|VIC|Australia","02-02-1990",55);
+            Driver d1 = new Driver ("invalidID", "Jane Doe", 3, "Light", "456 | Elm Street | Melbourne | VIC | Australia","02-02-1990",55);
             driverRepo.addDriver(d1);
             System.out.println("Test 2 Failed: Invalid ID was accepted");
         } catch (Exception e){
@@ -48,9 +48,9 @@ public class DriverIntegrationTest {
         }
 
         try {
-            Driver d2 = new Driver("24ab!@CDXY", "Alice Smith", 10, "Heavy", "789|Oak Street|Melbourne|VIC|Australia", "03-03-1975",55);
+            Driver d2 = new Driver("24ab!@CDXY", "Alice Smith", 10, "Heavy", "789 | Oak Street | Melbourne | VIC | Australia", "03-03-1975",55);
             driverRepo.addDriver(d2);
-            Driver d3 = new Driver("24ab!@CDXY", "Duplicate Person", 8, "Heavy", "321|Pine Street|Melbourne|VIC|Australia","04-04-1985",55);
+            Driver d3 = new Driver("24ab!@CDXY", "Duplicate Person", 8, "Heavy", "321 | Pine Street | Melbourne | VIC | Australia","04-04-1985",55);
             driverRepo.addDriver(d3);
             System.out.println("Test 2 Failed: Duplicate ID was accepted.");
         } catch (Exception e) {
@@ -66,13 +66,13 @@ public class DriverIntegrationTest {
     void updateDriverAndVerify(){
         System.out.println("Running test 3");
 
-        Driver d1 = new Driver("35cd!@XCSA", "Judy Rock", 9, "Light", "34|La Trobe Street|Melbourne|VIC|Australia","01-01-1990",34);
+        Driver d1 = new Driver("35cd!@XCSA", "Judy Rock", 9, "Light", "34 | La Trobe Street | Melbourne | VIC | Australia","01-01-1990",34);
         driverRepo.addDriver(d1);
 
         System.out.println("Address before update: " + d1.getAddress());
         System.out.println("Experience before update: " + d1.getExperienceYears());
 
-        driverRepo.updateDriverAddress("35cd!@XCSA", "99|Exhibition Street|Melbourne|VIC|Australia");
+        driverRepo.updateDriverAddress("35cd!@XCSA", "99 | Exhibition Street | Melbourne | VIC | Australia");
         driverRepo.updateDriverExperienceAndLicense("35cd!@XCSA", 8, "Heavy");
 
         DriverRepository reloadedRepo = new DriverRepository();
@@ -90,8 +90,8 @@ public class DriverIntegrationTest {
         System.out.println("Initial repo count: "+driverRepo.getDriverCount());
 
         try{
-            Driver d1 = new Driver("24ab!@XCSA", "Judy Rock", 9, "Light", "34|La Trobe Street|Melbourne|VIC|Australia", "01-01-1990",34);
-            Driver d2 = new Driver("23ab@#CDBA", "Sam Jones", 10, "Heavy", "45|Earl Street|Melbourne|VIC|Australia", "20-03-1980", 44);
+            Driver d1 = new Driver("24ab!@XCSA", "Judy Rock", 9, "Light", "34 | La Trobe Street | Melbourne | VIC | Australia", "01-01-1990",34);
+            Driver d2 = new Driver("23ab@#CDBA", "Sam Jones", 10, "Heavy", "45 | Earl Street | Melbourne | VIC | Australia", "20-03-1980", 44);
             driverRepo.addDriver(d1);
             driverRepo.addDriver(d2);
             System.out.println("Added two drivers, repo count: " + driverRepo.getDriverCount());
@@ -100,8 +100,8 @@ public class DriverIntegrationTest {
         }
 
         try{
-            Driver d3 = new Driver("56er$%DFRE", "Bob Jones", 12, "Light", "56|Oak Street|Melbourne|VIC|Australia", "05-09-1985", 39);
-            Driver d4 = new Driver("67yu#$SEDR", "Sally Brown", 7, "Heavy", "78|High Street|Melbourne|VIC|Australia", "20-03-1980",44);
+            Driver d3 = new Driver("56er$%DFRE", "Bob Jones", 12, "Light", "56 | Oak Street | Melbourne | VIC | Australia", "05-09-1985", 39);
+            Driver d4 = new Driver("67yu#$SEDR", "Sally Brown", 7, "Heavy", "78 | High Street | Melbourne | VIC | Australia", "20-03-1980",44);
             driverRepo.addDriver(d3);
             driverRepo.addDriver(d4);
             System.out.println("Added two more drivers, repo count: " + driverRepo.getDriverCount());

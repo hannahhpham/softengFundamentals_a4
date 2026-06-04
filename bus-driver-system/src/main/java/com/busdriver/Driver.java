@@ -194,18 +194,18 @@ public class Driver {
             return false;
         }
 
-        // Format: Street Number|Street Name|City|State|Country
-        String[] parts = address.split("\\|");
+        // Format: Street Number | Street Name | City | State | Country
+        String[] parts = address.split("\\s*\\|\\s*", -1);
 
         if (parts.length != 5) {
             return false;
         }
 
-        String streetNumber = parts[0].trim();
-        String streetName = parts[1].trim();
-        String city = parts[2].trim();
-        String state = parts[3].trim();
-        String country = parts[4].trim();
+        String streetNumber = parts[0];
+        String streetName = parts[1];
+        String city = parts[2];
+        String state = parts[3];
+        String country = parts[4];
 
         // Street number must be numeric
         if (!streetNumber.matches("\\d+")) {
