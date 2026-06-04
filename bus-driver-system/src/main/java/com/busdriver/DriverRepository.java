@@ -44,7 +44,7 @@ public class DriverRepository {
 
     public void saveDriverRepo(){
         String currDirectory = new File(".").getAbsolutePath();
-        File file = new File(currDirectory + "/src/main/java/com/busDriver/DriverRepository.txt");
+        File file = new File(currDirectory + "/src/main/java/com/busdriver/DriverRepository.txt");
 
         try (Writer writer = new FileWriter(file)){
             Gson gson = new Gson();
