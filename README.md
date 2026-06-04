@@ -23,3 +23,4 @@ Repository to store code for Software Engineering Fundamentals (Assignment 4). G
 - Sergey (2011). Finding out if a list of Objects contains something with a specified field value? [online] Stack Overflow. Available at: https://stackoverflow.com/questions/7481346/finding-out-if-a-list-of-objects-contains-something-with-a-specified-field-value [Accessed 28 May 2026].
     
 - baeldung (2018). Baeldung. [online] Baeldung. Available at: https://www.baeldung.com/find-list-element-java [Accessed 28 May 2026].
+
