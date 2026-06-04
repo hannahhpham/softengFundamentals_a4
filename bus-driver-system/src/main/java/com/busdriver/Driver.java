@@ -15,7 +15,7 @@ public class Driver {
 
 
     // D1: driverID must be unique
-    private static Set<String> existingDriverIDs = new HashSet<>();
+    private static transient Set<String> existingDriverIDs = new HashSet<>();
 
     public Driver(String driverID, String name, int experienceYears, String licenseType, String address, String birthDate, int age) {
         
@@ -240,6 +240,11 @@ public class Driver {
                licenseType.equals("Medium") ||
                licenseType.equals("Heavy") ||
                licenseType.equals("PublicTransport");
+    }
+
+    //Used for testing only
+    public static void clearExistingIDs(){
+        existingDriverIDs.clear();
     }
 }
         
