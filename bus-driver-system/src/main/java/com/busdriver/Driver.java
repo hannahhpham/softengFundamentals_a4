@@ -242,7 +242,7 @@ public class Driver {
                licenseType.equals("PublicTransport");
     }
 
-    //Used for testing only
+    // Sanika's added method for the integration tests?
     public static void clearExistingIDs(){
         existingDriverIDs.clear();
     }
