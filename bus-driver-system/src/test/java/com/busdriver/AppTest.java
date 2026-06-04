@@ -1,13 +1,8 @@
 package com.busdriver;
 
-//new junit5 imports
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+// this file is a default file that was created during project setup. 
+// no assignment 4 code is created here. please check the individual test files in this folder for tests.
 
-//old junit 4 file. keeping here just in case
-// import org.junit.Test;
-
-//all testing goes here! 
 
 /**
  * Unit test for simple App.
