@@ -117,7 +117,7 @@ public class DriverTest {
                 "Fiona Green",
                 15,
                 "Medium",
-                "1 | Main Street | Melbourne | VIC | Australia",
+                "1 | Main St | Melbourne | VIC | Australia",
                 "06-06-1965",
                 55
             );
@@ -196,7 +196,7 @@ public class DriverTest {
           Driver driver = new Driver(
               "35qr!@STMN",
               "Jack Lee",
-              10,
+              7,
               "Light",
               "123 | Maple Street | Melbourne | VIC | Australia",
               "08-08-1980",
